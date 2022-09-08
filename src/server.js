@@ -6,6 +6,7 @@ const colors = require('colors');
 const morgan = require('morgan');
 const mysql = require('mysql2/promise');
 const dbConfig = require('./config');
+const petsRouter = require('./routes/petsRoutes');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 });
 
 // ROUTES
+app.use('/api/v1/pets', petsRouter);
 
 // 404 - returns json
 app.use((req, res) => {
