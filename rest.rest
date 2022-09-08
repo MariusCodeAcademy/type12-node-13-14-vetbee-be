@@ -13,3 +13,15 @@ Content-Type: application/json
   "dob": "2017-07-07",
   "client_email": "mike@pukuotukas.com"
 }
+
+#### MEDS ALL
+GET http://localhost:3000/api/v1/meds/
+
+#### MEDS CREATE
+POST http://localhost:3000/api/v1/meds/
+Content-Type: application/json
+
+{
+  "name": "XANAX",
+  "description": "Does somenthing"
+}
