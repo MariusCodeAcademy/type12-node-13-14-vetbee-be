@@ -2,4 +2,14 @@
 GET http://localhost:3000/api/v1/pets/
 
 #### PETS DELETE
-DELETE http://localhost:3000/api/v1/pets/1
+DELETE http://localhost:3000/api/v1/pets/5
+
+#### PETS CREATE
+POST http://localhost:3000/api/v1/pets/
+Content-Type: application/json
+
+{
+  "name": "MIKE pukuotukas",
+  "dob": "2017-07-07",
+  "client_email": "mike@pukuotukas.com"
+}

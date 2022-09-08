@@ -1,5 +1,5 @@
 const express = require('express');
-const { petsIndex, petsRemove } = require('../model/petsModel');
+const { petsIndex, petsRemove, petsCreate } = require('../model/petsModel');
 
 const petsRouter = express.Router();
 
@@ -26,6 +26,23 @@ petsRouter.delete('/:id', async (req, res) => {
       return;
     }
     res.status(400).json({ msg: 'nothing deleted' });
+    // issiusti atskyma su res
+  } catch (error) {
+    console.log('error ===', error);
+    res.status(500).json({ msg: 'Some things dont works' });
+  }
+});
+petsRouter.post('/', async (req, res) => {
+  try {
+    const { name, dob, client_email } = req.body;
+    if (!name || !dob || !client_email) throw new Error('no name, dob, client_email given');
+    // gauti viusu pets su modelio funkcija
+    const createSuccess = await petsCreate(name, dob, client_email);
+    if (createSuccess) {
+      res.status(201).json({ msg: `${name} created` });
+      return;
+    }
+    res.status(400).json({ msg: 'nothing created' });
     // issiusti atskyma su res
   } catch (error) {
     console.log('error ===', error);
