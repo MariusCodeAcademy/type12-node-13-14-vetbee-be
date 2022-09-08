@@ -14,6 +14,12 @@ async function testDbConnection() {
   }
 }
 
+async function getMultiple(sql) {
+  const [rows] = await db.query(sql);
+  return rows;
+}
+
 module.exports = {
   testDbConnection,
+  getMultiple,
 };
