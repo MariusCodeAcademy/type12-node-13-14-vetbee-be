@@ -1,2 +1,5 @@
 #### ALL PETS
 GET http://localhost:3000/api/v1/pets/
+
+#### PETS DELETE
+DELETE http://localhost:3000/api/v1/pets/1
