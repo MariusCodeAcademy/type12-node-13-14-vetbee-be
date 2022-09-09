@@ -15,7 +15,15 @@ async function checkPetBody(req, res, next) {
     console.log(' validation error ===', error);
     // is error pasiusti atgal tik message dalis
     // is error nusiusti objektu masyva kurist turi field ir message
-    res.status(400).json({ msg: 'bad data sent', error: error.details, type: 'validation' });
+    const errorWithFields = error.details.map((eObj) => ({
+      field: eObj.path[0],
+      message: eObj.message,
+    }));
+    res.status(400).json({
+      msg: 'bad data sent',
+      error: errorWithFields,
+      type: 'validation',
+    });
   }
 }
 
