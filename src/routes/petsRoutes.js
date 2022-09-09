@@ -1,5 +1,7 @@
 const express = require('express');
+const Joi = require('joi');
 const { petsIndex, petsRemove, petsCreate } = require('../model/petsModel');
+const { checkPetBody } = require('../utils/middleware');
 
 const petsRouter = express.Router();
 
@@ -32,10 +34,11 @@ petsRouter.delete('/:id', async (req, res) => {
     res.status(500).json({ msg: 'Some things dont works' });
   }
 });
-petsRouter.post('/', async (req, res) => {
+
+petsRouter.post('/', checkPetBody, async (req, res) => {
   try {
     const { name, dob, client_email } = req.body;
-    if (!name || !dob || !client_email) throw new Error('no name, dob, client_email given');
+    // if (!name || !dob || !client_email) throw new Error('no name, dob, client_email given');
     // gauti viusu pets su modelio funkcija
     const createSuccess = await petsCreate(name, dob, client_email);
     if (createSuccess) {

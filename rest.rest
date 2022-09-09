@@ -9,9 +9,9 @@ POST http://localhost:3000/api/v1/pets/
 Content-Type: application/json
 
 {
-  "name": "MIKE pukuotukas",
-  "dob": "2017-07-07",
-  "client_email": "mike@pukuotukas.com"
+  "name": "To",
+  "dob": "2008-07-07",
+  "client_email": "Bomb@pukuotukas"
 }
 
 #### MEDS ALL
