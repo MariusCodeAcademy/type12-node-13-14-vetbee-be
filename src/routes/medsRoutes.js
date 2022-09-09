@@ -17,6 +17,7 @@ medsRouter
   .post(async (req, res) => {
     try {
       const { name, description } = req.body;
+      if (!name || !description) throw new Error('no name or description');
       const createMedSuccess = await medsCreate(name, description);
       // if (createMedSuccess) {
       //   res.status(201).json({ msg: 'med created' });
